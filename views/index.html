@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Corte 2</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <style>
+        h1{
+            font-size: 3cm;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+
+        .centrarDiv {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+
+        #Formulario{
+            background-color: antiquewhite;
+            width: 60vw;
+            min-width: 500px;
+            height: auto;
+            padding: 50px;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            border-radius: 5px;
+        }
+
+        .formulario__Header{
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .formulario__Form{
+            background-color: whitesmoke;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            border-radius: 5px;
+            padding: 15px;
+        }
+
+        .formulario__Footer{
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        nav{
+            float: left;
+        }
+            nav ul{
+                list-style: none;
+                overflow: hidden
+            }
+            nav ul li {
+                float: left;
+                font-family: Arial, Helvetica, sans-serif;;
+                font-size: 25px;
+                }
+                nav ul li a {
+                    display: block; 
+                    padding: 30px;
+                    color: #000000;
+                    text-decoration: none;
+                    }
+                    
+
+
+    </style>
+</head>
+
+<body style="background-color: #333;" class="centrarDiv">
+
+        <main id="Formulario" class="main centrarDiv">  
+            <div class="container">
+
+                <header style="display: flex; " class="formulario__Header">
+                    <div style="width: 35%;">
+                    </div>
+                    <div style="display: grid; place-items: center;">
+                        <a href="/public/img/logo.jpg"></a>
+                        <h4><%=Header%></h4>
+                        <br>
+                    </div>
+
+                    
+                </header>
+                <center>
+                <nav>
+                    <ul>
+                        <li><a href="#">Acerca de la Empresa</a></li>
+                        <li><a href="#">Ingreso de Personal</a></li>
+                        <li><a href="#">Contactanos</a></li>
+                    </ul>
+                </nav>
+            </center>
+
+                
+                <form action="" method="p" class="formulario__Form">
+                    
+
+                    <div class="input-group mb-3">
+                        <span style="width: 175px; justify-content: center;" class="input-group-text" id="basic-addon1">Numero de Contrato</span>
+                        <input id="NumerodeContrato" name="NumerodeContrato" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" required="true">
+                    </div>
+
+
+                    <div class="input-group mb-3">
+                        <span style="width: 175px; justify-content: center;" class="input-group-text" id="basic-addon1">Nombre</span>
+                        <input id="Nombre" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" required="true">
+                    </div>
+
+
+                    <div class="input-group mb-3">
+                        <span style="width: 175px; justify-content: center;"  class="input-group-text" id="basic-addon1">Domicilio</span>
+                        <input id="Domicilio" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" required="true">
+                    </div>
+            
+
+
+                    <div class="input-group mb-3">
+                        <label style="width: 175px; justify-content: center;" class="input-group-text" for="inputGroupSelect01">Nivel de Estudios</label>
+                        <select id="NivelEstudio" class="form-select" required>
+                          <option value="">Seleccionar...</option>
+                          <option value="1">Licenciatura</option>
+                          <option value="2">Maestria</option>
+                          <option value="3">Doctorado</option>
+                        </select>
+                      </div>
+
+                    <div class="input-group mb-3">
+                        <span style="width: 175px; justify-content: center;" class="input-group-text" id="basic-addon1">Pago Diario Base</span>
+                        <input id="PagoDiario" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" required="true">
+                    </div>  
+
+                    <!--Precio-->
+                    <div class="input-group mb-3">
+                        <span style="width: 140px; justify-content: center;" class="input-group-text" id="basic-addon1">Dias Trabajados</span>
+                        <input id="DiasTrabajados" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" required="true">
+                    </div>
+
+                    <hr>
+
+                    <div class="input-group mb-3">
+                        <center>
+                            <input type="button" class="btn btn-outline-secondary" value="Enviar" onclick="Resultados()">
+                            <input type="reset" class="btn btn-outline-secondary" value="Limpiar">
+                        </center>
+                    </div>
+
+
+                      <!--Resultados-->
+                      <div class="input-group flex-nowrap">
+                        <span style="width: 125px; justify-content: center;" class="input-group-text" id="addon-wrapping">Nombre</span>
+                        <input id="NombreFinal" style="max-width: 250px;" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" readonly >
+                      </div>
+
+                      <div class="input-group flex-nowrap">
+                        <span style="width: 125px; justify-content: center;" class="input-group-text" id="addon-wrapping">Grado</span>
+                        <input id="GradoFinal" style="max-width: 250px;" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" readonly >
+                      </div>
+
+                      <div class="input-group flex-nowrap">
+                        <span style="width: 125px; justify-content: center;" class="input-group-text" id="addon-wrapping">Dias Trabajados</span>
+                        <input id="DiasFinal" style="max-width: 250px;" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" readonly >
+                      </div>
+
+                      <div class="input-group flex-nowrap">
+                        <span style="width: 125px; justify-content: center;" class="input-group-text" id="addon-wrapping">Pago por Dia</span>
+                        <span class="input-group-text" id="addon-wrapping">$</span>
+                        <input id="PagoFinal" style="max-width: 250px;" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" readonly >
+                      </div>
+
+                      <div class="input-group flex-nowrap">
+                        <span style="width: 125px; justify-content: center;" class="input-group-text" id="addon-wrapping">SubTotal</span>
+                        <span class="input-group-text" id="addon-wrapping">$</span>
+                        <input id="SubTotal" style="max-width: 250px;" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" readonly >
+                      </div>
+
+                      <div class="input-group flex-nowrap">
+                        <span style="width: 125px; justify-content: center;"  class="input-group-text" id="addon-wrapping">Impuesto 16%</span>
+                        <span class="input-group-text" id="addon-wrapping">$</span>
+                        <input id="Impuesto" style="max-width: 250px;" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" readonly >
+                      </div>
+
+                      <div class="input-group flex-nowrap">
+                        <span style="width: 125px; justify-content: center;"  class="input-group-text" id="addon-wrapping">Total a Pagar</span>
+                        <span class="input-group-text" id="addon-wrapping">$</span>
+                        <input id="TotalAPagar" style="max-width: 250px;" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" readonly >
+                      </div>
+
+                </form>
+
+                <footer class="formulario__Footer">
+                    <b><%=Footer%></b>
+                </footer>
+            </div>
+            
+        </main>
+
+
+</body>
+
+<script src="./js/main.js"></script>
+
+</html>

@@ -1,35 +1,37 @@
-
-
-// Importar el módulo body-parser y el framework Express
-const bodyParser = require("body-parser");
+// Importar los módulos necesarios
+const http = require("http");
 const express = require("express");
+const bodyparser = require("body-parser");
 
-// Crear una instancia de Router
-const router = express.Router();
-  
-// Ruta principal que muestra una página con los datos del array "datos"
-router.get("/", (req, res) => {
-    res.render("index.html", {
-      Header: "Sistema MicroInformatica",
-      Footer: "Compañia de Luz @Derechos Reservador Irving Acosta",
-    });
+// Importar las rutas definidas en el archivo index.js dentro de la carpeta router
+const Ruta = require("./router/index");
+const path = require("path");
+
+// Crear una instancia de Express
+const app = express();
+
+// Establecer el motor de plantillas como EJS
+app.set("view engine","ejs");
+
+// Establecer la carpeta pública para servir archivos estáticos
+app.use(express.static(__dirname + "/public"));
+
+// Analizar los cuerpos de las solicitudes HTTP
+app.use(bodyparser.urlencoded({ extended: true }));
+
+// Registrar el motor de plantillas EJS para la extensión html
+app.engine("html", require("ejs").renderFile);
+
+// Usar las rutas definidas en misRutas
+app.use(Ruta);
+
+// Agregar un middleware para manejar solicitudes no encontradas (404)
+app.use((req, res, next) => {
+  res.status(404).sendFile(__dirname + "/public/error.html");
 });
 
-/*// Ruta que muestra una página con una tabla vacía que espera un parámetro llamado "numero" en la URL
-router.get("/tabla", (req, res) => {
-    const params = {
-     numero: req.query.numero
-    };
-    res.render("tabla.html", params);
-});*/
-
-// Ruta que recibe el número enviado a través del formulario de la página "/tabla" y lo muestra en una tabla
-/*router.post("/tabla", (req, res) => {
-    const params = {
-        numero: req.body.numero
-    };
-    res.render("tabla.html", params);
-});*/
-
-// Exportar el módulo Router para que pueda ser utilizado en otros archivos
-module.exports = router;
+// Iniciar el servidor en el puerto 500 y mostrar un mensaje en la consola
+const puerto = 500;
+app.listen(puerto, () => {
+  console.log("Iniciando Puerto");
+});
